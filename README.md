@@ -16,7 +16,7 @@ The notebooks demonstrate how to transform historical stock data into time serie
 Open a terminal and run:
 
 ```powershell
-git clone https://github.com/aashixh0/Stock-Price-Prediction>
+git clone https://github.com/aashixh0/Stock-Price-Prediction.git
 cd "Stock Price Prediction"
 ```
 
@@ -61,6 +61,10 @@ Then open the notebooks in this order:
 2. `helper_functions.ipynb`
 3. `lstm_training.ipynb`
 4. `transformer_training.ipynb`
+
+## Model Performance
+
+Based on the notebook evaluation results, the Transformer model performed better than the LSTM model for this data setup. The Transformer achieved a lower MAPE and variance ratio, indicating more accurate and more stable predictions.
 
 ## Repository Structure
 
