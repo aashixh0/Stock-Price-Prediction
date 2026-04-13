@@ -2,49 +2,92 @@
 
 ## Project Overview
 
-This project utilizes Long Short-Term Memory (LSTM) and Transformer models to predict stock prices based on historical data. It demonstrates how univariate time series forecasting can be approached using advanced deep learning techniques, specifically tailored to handle the nuances and complexities of financial market data.
+This repository contains a stock price prediction project using deep learning. The project includes:
 
-## Data Preparation
+- `data_preparation.ipynb` - data loading, cleaning, and preparation.
+- `helper_functions.ipynb` - reusable preprocessing, scaling, and sequence utilities.
+- `lstm_training.ipynb` - training and evaluating an LSTM model.
+- `transformer_training.ipynb` - training and evaluating a Transformer model.
 
-The data preparation process involves extracting stock prices from Yahoo Finance, focusing on daily closing prices. The data is then organized into a format suitable for time series analysis, ensuring consistency in date formatting and handling any missing values through interpolation or forward filling.
+The notebooks demonstrate how to transform historical stock data into time series sequences and train models to forecast future closing prices.
 
-## Data Preprocessing
+## How to Clone the Repository
 
-Data preprocessing includes:
+Open a terminal and run:
 
--   **Normalization**: Stock price data is normalized to ensure that the scale of the prices does not affect the model's ability to learn. Typically, Min-Max scaling is applied to transform the prices into a scaled range (e.g., 0 to 1).
--   **Sequence Creation**: The data is transformed into sequences that represent windows of consecutive days. Each sequence is used to predict the price at the next time step.
+```powershell
+git clone https://github.com/aashixh0/Stock-Price-Prediction>
+cd "Stock Price Prediction"
+```
 
-## LSTM Architecture
+## Create and Use the Virtual Environment
 
-The LSTM model is designed to capture temporal dependencies and long-term relationships in the data:
+From the repository root, create the `myenv` virtual environment:
 
--   **Input Layer**: Receives sequences of stock prices.
--   **LSTM Layers**: Multiple LSTM layers with dropout regularization to prevent overfitting. Each LSTM layer captures different temporal scales and dependencies.
--   **Dense Output Layer**: A fully connected layer that outputs the predicted stock price for the following day.
+```powershell
+python -m venv myenv
+```
 
-## Transformer Architecture
+Activate the environment in PowerShell:
 
-The Transformer model applies self-attention mechanisms to model sequences:
+```powershell
+myenv\Scripts\Activate
+```
 
--   **Input Embeddings**: Transforms input sequences into dense embeddings which are then processed by the Transformer.
--   **Positional Encoding**: Adds information about the order of data points in the time series.
--   **Attention Layers**: Multiple layers of multi-head attention and feed-forward neural networks, allowing the model to focus on different parts of the input sequence for making predictions.
--   **Output Layer**: Similar to LSTM, a fully connected layer provides the final prediction.
+Or activate it in Command Prompt:
 
-## Evaluation Metrics
+```cmd
+myenv\Scripts\activate.bat
+```
 
-Model performance is evaluated using the following metrics:
+Once the environment is active, install the required packages:
 
--   **Mean Absolute Percentage Error (MAPE)**: This metric provides a clear percentage-based measure of how close the predictions are to the actual values, making it intuitive and straightforward for performance interpretation.
--   **Variance Ratio**: Compares the variance of the predicted values to the variance of the actual values to assess the consistency and stability of the model predictions over time.
+```powershell
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
 
-# Next Steps
+## Running the Notebooks
 
-To further enhance the stock price prediction models, the following strategies can be explored:
+With the virtual environment active and dependencies installed:
 
--   [ ] **Multivariate Time Series Forecasting**: Incorporate additional features such as trading volume, technical indicators, or macroeconomic data to improve the model's predictive power.
--   [ ] **Candlestick Patterns**: Utilize candlestick patterns as input features to capture more detailed information about price movements and market dynamics.
--   [ ] **Hyperparameter Tuning**: Since only basic tuning was done, experiment with different configurations of model parameters to optimize performance, using techniques like grid search or random search.
--   [ ] **Ensemble Methods**: Combine the predictions from multiple models to improve accuracy and robustness, potentially integrating different model architectures.
--   [ ] **Advanced Feature Engineering**: Explore more complex features like technical indicators (e.g., moving averages, RSI, MACD) to see if they can provide additional predictive power.
+```powershell
+jupyter notebook
+```
+
+Then open the notebooks in this order:
+
+1. `data_preparation.ipynb`
+2. `helper_functions.ipynb`
+3. `lstm_training.ipynb`
+4. `transformer_training.ipynb`
+
+## Repository Structure
+
+- `data_preparation.ipynb` - prepare and transform raw stock price data.
+- `helper_functions.ipynb` - reusable helper functions for preprocessing and visualization.
+- `lstm_training.ipynb` - LSTM-based model training and evaluation.
+- `transformer_training.ipynb` - Transformer-based model training and evaluation.
+- `datasets/` - optional folder for saved data files.
+- `requirements.txt` - list of Python packages required for the notebooks.
+
+## Notes
+
+- The notebooks use historical stock price data, typically downloaded from Yahoo Finance.
+- `requirements.txt` includes the main dependencies needed to run the notebooks.
+- If the dataset is not already available, the notebooks should download it automatically when run.
+
+## Recommended Workflow
+
+1. Clone the repository.
+2. Create and activate `myenv`.
+3. Install dependencies from `requirements.txt`.
+4. Launch Jupyter Notebook.
+5. Run `data_preparation.ipynb` first, then `helper_functions.ipynb`, followed by the training notebooks.
+
+## Optional Improvements
+
+- Add technical indicators such as volume, moving averages, RSI, or MACD.
+- Use multivariate inputs for richer forecasting.
+- Tune model hyperparameters for better performance.
+- Compare results across different stock tickers.
